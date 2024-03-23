@@ -117,6 +117,10 @@
         // Counter to track the number of added forms
         let formCounter = parseInt("{{ old('form_counter', 1) }}");
 
+        function updateFormCounter() {
+            formCounter = $('.clone-form').length + 1;
+            console.log(formCounter);
+        }
         // Add Form button click event
         function addClonedForm() {
             // Clone the form template
@@ -127,7 +131,8 @@
                 const originalName = $(this).attr('name');
                 const newName = originalName.replace(/\[\d+\]/, '[' + formCounter + ']');
                 $(this).attr('name', newName);
-            });
+
+            })
 
             // Append the cloned form to the dynamicForm
             $('#dynamicForm').append(clonedForm);
@@ -142,6 +147,7 @@
             if (formCounter > 1) {
                 $('#removeForm').show();
             }
+            updateFormCounter();
         }
         $('#addForm').on('click', function() {
             addClonedForm();

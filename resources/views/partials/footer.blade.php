@@ -38,49 +38,20 @@
 
 
 <!-- App js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#datatable2').DataTable();
-    });
-</script>
+<!-- Load jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Load Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Load DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- Initialize DataTables -->
 <script>
-    /* BEGIN SVG WEATHER ICON */
-    if (typeof Skycons !== 'undefined') {
-        var icons = new Skycons({
-                "color": "#fff"
-            }, {
-                "resizeClear": true
-            }),
-            list = [
-                "clear-day", "clear-night", "partly-cloudy-day",
-                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                "fog"
-            ],
-            i;
-
-        for (i = list.length; i--;)
-            icons.set(list[i], list[i]);
-        icons.play();
-    };
-
-    // scroll
-
     $(document).ready(function() {
-
-        $("#boxscroll").niceScroll({
-            cursorborder: "",
-            cursorcolor: "#cecece",
-            boxzoom: true
-        });
-        $("#boxscroll2").niceScroll({
-            cursorborder: "",
-            cursorcolor: "#cecece",
-            boxzoom: true
-        });
-
+        $('#datatable').DataTable();
     });
 </script>
-</body>
+
+
 
 </html>

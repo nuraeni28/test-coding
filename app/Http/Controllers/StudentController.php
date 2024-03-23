@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
+    public function index()
+    {
+        return view('create');
+    }
+    public function dashboard()
+    {
+        $students = Student::all();
+        return view('index', compact('students'));
+    }
     public function store(Request $request)
     {
         $data = [];
@@ -21,19 +30,20 @@ class StudentController extends Controller
         foreach ($name as $key => $value) {
             $validator = Validator::make(
                 [
-                    'name' => $request->input('name')[$key],
-                    'address' => $request->input('address')[$key],
+                    'nim' => $request->input('nim')[$key],
                     'phone' => $request->input('phone')[$key],
                 ],
                 [
-                    'name' => ['required', 'string', 'max:255'],
-                    'address' => ['required', 'string', 'max:255'],
-                    'phone' => ['required', 'numeric', 'unique:students'],
+                    'nim' => ['required', 'string', 'unique:students'],
+                    'phone' => ['required', 'numeric', 'unique:students', 'digits_between:8,14'],
                 ],
                 [
                     'phone.unique' => 'No HP ' . $request->input('phone')[$key] . ' sudah digunakan.',
+                    'phone.digits_between' => 'No HP ' . $request->input('phone')[$key] . ' harus 8-14 digit.',
+                    'nim.unique' => 'NIM ' . $request->input('nim')[$key] . ' sudah digunakan.',
                 ],
             );
+
             // Cek jika validasi gagal
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -53,6 +63,6 @@ class StudentController extends Controller
 
         //bulk insert students
         Student::insert($data);
-        return view('index')->with('success', 'Data mahasiswa berhasil disimpan.');
+        return redirect()->route('student.dashboard')->with('success', 'Data mahasiswa berhasil disimpan.');
     }
 }
