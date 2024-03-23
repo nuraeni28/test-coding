@@ -41,8 +41,9 @@
     <div class="form-group">
         <label>Nama</label>
         <input class="form-control" type="text" placeholder="Nama..." name="name[]" value="{{ old('name.0') }}"
-            required>
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
     </div>
+
     <div class="form-group">
         <label>NIM</label>
         <input class="form-control" type="number" placeholder="NIM..." name="nim[]" value="{{ old('nim.0') }}"
@@ -58,7 +59,7 @@
     <div class="form-group">
         <label>Jurusan</label>
         <input class="form-control" type="text" placeholder="Jurusan..." name="major[]" value="{{ old('major.0') }}"
-            required>
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
     </div>
     <div class="form-group">
         <label>No Hanphone</label>
@@ -68,7 +69,7 @@
     <div class="form-group">
         <label>Alamat</label>
         <input class="form-control" type="text" placeholder="Alamat..." name="address[]"
-            value="{{ old('address.0') }}" required>
+            value="{{ old('address.0') }}"oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
     </div>
 
 </form>
@@ -80,7 +81,7 @@
     <div class="form-group">
         <label>Nama</label>
         <input class="form-control" type="text" placeholder="Nama..." name="name[]" value="{{ old('name.*') }}"
-            required>
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
     </div>
     <div class="form-group">
         <label>NIM</label>
@@ -108,7 +109,7 @@
     <div class="form-group">
         <label>Alamat</label>
         <input class="form-control" type="text" placeholder="Alamat..." name="address[]"
-            value="{{ old('address.*') }}" required>
+            value="{{ old('address.*') }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
